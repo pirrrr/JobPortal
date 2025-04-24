@@ -7,7 +7,7 @@ namespace JobPortal.Models
 {
 	public class tblEmployerInfoModel
 	{
-        public int userID { get; set; }
+        public int userID { get; set; } //hahaha
 
         public String companyName { get; set; }
         public int industryID { get; set; }
