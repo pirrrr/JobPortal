@@ -1,0 +1,121 @@
+﻿@{
+    Layout = "~/Views/Shared/_headerfooter.cshtml";
+}
+
+<style>
+    body {
+        background-color: #fca311;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .signup-container {
+        width: 100%;
+        max-width: 320px;
+        background-color: white;
+        padding: 2rem 2rem 2.5rem 2rem;
+        border-radius: 12px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    h2 {
+        font-weight: 700;
+        font-size: 1.125rem;
+        margin: 0 0 1.5rem 0;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        background-color: #d9d9d9;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        color: #4a4a4a;
+        box-sizing: border-box;
+    }
+
+    input::placeholder {
+        color: #7a7a7a;
+    }
+
+    .signup-btn {
+        background-color: #fca311;
+        border: none;
+        width: 100%;
+        padding: 0.5rem 0;
+        font-weight: 700;
+        border-radius: 6px;
+        margin-top: 1.25rem;
+        cursor: pointer;
+        font-size: 0.875rem;
+        color: black;
+        transition: filter 0.2s ease;
+    }
+
+        .signup-btn:hover,
+        .signup-btn:focus {
+            filter: brightness(0.9);
+            outline: none;
+        }
+
+    .social-icons {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+        .social-icons img {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            object-fit: contain;
+        }
+
+    .divider {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: 0.75rem;
+        color: #555555;
+        user-select: none;
+    }
+</style>
+</head>
+<body>
+    <div class="signup-container" role="main" aria-label="Sign up form">
+        <h2>SIGN UP</h2>
+
+        <form action="/JobPortal/Homepage" method="post" autocomplete="off" novalidate>
+            <input type="text" name="FirstName" placeholder="First Name" autocomplete="given-name" required />
+            <input type="text" name="LastName" placeholder="Last Name" autocomplete="family-name" required />
+            <input type="email" name="Email" placeholder="Email Address" autocomplete="email" required />
+            <input type="password" name="Password" placeholder="Password" autocomplete="new-password" required />
+            <input type="password" name="ConfirmPassword" placeholder="Confirm Password" autocomplete="new-password" required />
+
+            <div class="divider">— or continue with —</div>
+
+            <div class="social-icons" role="group" aria-label="Social sign up options">
+                <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google logo" title="Google" />
+                <img src="https://img.icons8.com/color/48/facebook.png" alt="Facebook logo" title="Facebook" />
+                <img src="https://img.icons8.com/ios-filled/48/000000/x.png" alt="X logo" title="X" />
+            </div>
+
+            <button type="submit" class="signup-btn" aria-label="Sign Up">
+                Sign Up
+            </button>
+        </form>
+    </div>
+</body>
+</html>
+

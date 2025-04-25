@@ -17,5 +17,13 @@ namespace JobPortal.Controllers
         {
             return View();
         }
+        public ActionResult Register()
+        {
+            return View();
+        }
+        public ActionResult Homepage()
+        {
+            return View();
+        }
     }
 }
