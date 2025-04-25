@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/Views/Shared/_headerfooter.cshtml";
+}
+
+<body>
+    <div class="login-container">
+        <h2>LOGIN</h2>
+
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+            @Html.TextBoxFor(m => m.Username, new { placeholder = "Username" })
+            @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
+            <button type="submit" class="login-btn">LOGIN</button>
+        }
+
+        <form action="@Url.Action("SignUp", "Account")" method="get">
+            <button type="submit" class="signup-btn">Sign Up</button>
+        </form>
+    </div>
+</body>
