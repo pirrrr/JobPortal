@@ -1,243 +1,265 @@
 ﻿@{
-    Layout = "~/Views/Shared/_headerfooter.cshtml";
+    Layout = "~/Views/Shared/_JobPortalLayout.cshtml";
 }
 
 <style>
     :root {
         --primary-color: #fda837;
+        --primary-hover: #e89626;
         --secondary-color: #fff6e6;
         --text-color: #333;
-        --border-radius: 8px;
-        --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --text-light: #666;
+        --border-color: #e0e0e0;
+        --border-radius: 12px;
+        --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
     }
 
     body {
-        background-color: var(--secondary-color);
+        background: linear-gradient(135deg, var(--secondary-color) 0%, #fff 100%);
         font-family: 'Inter', Arial, sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         margin: 0;
-        padding: 20px;
+        padding: 60px 20px 40px 20px;
+        color: var(--text-color);
     }
 
     .signup-container {
         width: 100%;
-        max-width: 450px;
+        max-width: 650px;
         background-color: white;
-        padding: 40px;
+        padding: 4rem 3rem 3rem 3rem;
         border-radius: var(--border-radius);
         box-shadow: var(--box-shadow);
         text-align: center;
+        transition: var(--transition);
+        margin: 2rem 0;
     }
 
     .signup-header {
-        margin-bottom: 30px;
+        margin-bottom: 2rem;
     }
 
-        .signup-header h2 {
-            color: var(--text-color);
-            font-size: 28px;
-            font-weight: 600;
-            margin: 0 0 10px;
-        }
+    .signup-header h2 {
+        color: var(--text-color);
+        font-size: 1.875rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem;
+        letter-spacing: -0.5px;
+    }
 
-        .signup-header p {
-            color: #666;
-            margin: 0;
-            font-size: 16px;
-        }
+    .signup-header p {
+        color: var(--text-light);
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
 
     .form-group {
-        margin-bottom: 20px;
+        margin-bottom: 1.5rem;
         text-align: left;
     }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text-color);
-            font-weight: 500;
-            font-size: 14px;
-        }
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--text-color);
+        font-weight: 600;
+        font-size: 0.875rem;
+    }
 
     .input-group {
         position: relative;
     }
-
-        .input-group i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #666;
-        }
 
     input[type="text"],
     input[type="email"],
     input[type="password"],
     select {
         width: 100%;
-        padding: 12px 15px 12px 40px;
-        border: 1px solid #e0e0e0;
+        padding: 0.75rem 1rem;
+        border: 2px solid var(--border-color);
         border-radius: var(--border-radius);
-        font-size: 15px;
-        transition: all 0.3s;
-        box-sizing: border-box;
+        font-size: 0.875rem;
+        transition: var(--transition);
         background-color: white;
     }
 
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="password"]:focus,
-        select:focus {
-            border-color: var(--primary-color);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(253, 168, 55, 0.1);
-        }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    select:focus {
+        border-color: var(--primary-color);
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(253, 168, 55, 0.15);
+    }
 
     .name-group {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 15px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
     }
 
-    .password-group {
+    /* Role Selection Styling */
+    .role-selection {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .role-option {
+        flex: 1;
         position: relative;
     }
 
+    .role-option input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .role-option label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem;
+        border: 2px solid var(--border-color);
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 500;
+    }
+
+    .role-option input[type="radio"]:checked + label {
+        border-color: var(--primary-color);
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+    }
+
+    .role-option label:hover {
+        border-color: var(--primary-color);
+        background-color: var(--secondary-color);
+    }
+
+    /* Password Toggle Button */
     .password-toggle {
         position: absolute;
-        right: 15px;
+        right: 1rem;
         top: 50%;
         transform: translateY(-50%);
         background: none;
         border: none;
-        color: #666;
+        color: var(--text-light);
         cursor: pointer;
         padding: 0;
-        font-size: 14px;
+        font-size: 0.875rem;
+        transition: var(--transition);
     }
 
-        .password-toggle:hover {
-            color: var(--primary-color);
-        }
-
-    .password-requirements {
-        margin-top: 8px;
-        font-size: 12px;
-        color: #666;
+    .password-toggle:hover {
+        color: var(--primary-color);
     }
 
-    .requirement {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        margin-top: 4px;
-    }
-
-        .requirement.valid {
-            color: #4caf50;
-        }
-
-    button {
+    button.signup-btn {
         width: 100%;
-        padding: 14px;
-        font-weight: 500;
-        font-size: 16px;
+        padding: 1rem;
+        font-weight: 600;
+        font-size: 1rem;
         border: none;
         border-radius: var(--border-radius);
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-
-    .signup-btn {
         background-color: var(--primary-color);
         color: white;
-        margin-bottom: 15px;
+        cursor: pointer;
+        transition: var(--transition);
+        margin-top: 1rem;
+        box-shadow: 0 2px 8px rgba(253, 168, 55, 0.2);
     }
 
-        .signup-btn:hover {
-            background-color: #e89626;
-        }
+    button.signup-btn:hover {
+        background-color: var(--primary-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(253, 168, 55, 0.3);
+    }
+
+    button.signup-btn:active {
+        transform: translateY(0);
+    }
+
+    .terms {
+        margin-top: 1.5rem;
+        font-size: 0.875rem;
+        color: var(--text-light);
+    }
+
+    .terms a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .terms a:hover {
+        text-decoration: underline;
+    }
 
     .login-link {
         color: var(--primary-color);
         text-decoration: none;
-        font-size: 14px;
         font-weight: 500;
-        transition: color 0.3s;
+        transition: var(--transition);
     }
 
-        .login-link:hover {
-            color: #e89626;
-        }
-
-    .divider {
-        display: flex;
-        align-items: center;
-        margin: 25px 0;
-        color: #666;
+    .login-link:hover {
+        color: var(--primary-hover);
+        text-decoration: underline;
     }
 
-        .divider::before,
-        .divider::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background-color: #e0e0e0;
+    /* Responsive Design */
+    @@media (max-width: 768px) {
+        body {
+            padding: 40px 20px;
         }
 
-        .divider span {
-            padding: 0 15px;
-            font-size: 14px;
+        .signup-container {
+            padding: 3rem 2rem 2rem 2rem;
+            margin: 1rem 0;
         }
 
-    .social-login {
-        display: flex;
-        gap: 15px;
-        margin-bottom: 25px;
+        .name-group {
+            grid-template-columns: 1fr;
+        }
+
+        .role-selection {
+            flex-direction: column;
+        }
+
+        .signup-header h2 {
+            font-size: 1.5rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            padding: 0.625rem 0.875rem;
+        }
+
+        button.signup-btn {
+            padding: 0.875rem;
+        }
     }
 
-    .social-btn {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 12px;
-        border: 1px solid #e0e0e0;
-        border-radius: var(--border-radius);
-        background-color: white;
-        color: var(--text-color);
-        transition: all 0.3s;
+    @@media (max-width: 480px) {
+        body {
+            padding: 30px 15px;
+        }
+
+        .signup-container {
+            padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+            margin: 0.5rem 0;
+        }
     }
-
-        .social-btn:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--primary-color);
-        }
-
-        .social-btn img {
-            width: 20px;
-            height: 20px;
-        }
-
-    .terms {
-        margin-top: 20px;
-        font-size: 14px;
-        color: #666;
-    }
-
-        .terms a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-            .terms a:hover {
-                text-decoration: underline;
-            }
 </style>
 
 <div class="signup-container">
@@ -246,11 +268,18 @@
         <p>Get started with your job search journey</p>
     </div>
 
-    <div class="divider">
-        <span>or register with email</span>
-    </div>
+    <form method="post" autocomplete="off" novalidate>
+        <div class="role-selection">
+            <div class="role-option">
+                <input type="radio" id="student" name="Roles" value="Student" ng-model="selectedRole">
+                <label for="student">Student</label>
+            </div>
+            <div class="role-option">
+                <input type="radio" id="employer" name="Roles" value="Employer" ng-model="selectedRole">
+                <label for="employer">Employer</label>
+            </div>
+        </div>
 
-    <form action="/JobPortal/Homepage" method="post" autocomplete="off" novalidate>
         <div class="name-group">
             <div class="form-group">
                 <label for="firstName">First Name</label>
@@ -272,6 +301,27 @@
             </div>
         </div>
 
+        <div ng-show="selectedRole === 'Student'" class="form-group">
+            <label for="program">Program</label>
+            <div class="input-group">
+                <input type="text" id="program" name="program" placeholder="Ex. BSIT / BSIS / BSCS" required maxlength="11">
+            </div>
+        </div>
+
+        <div ng-show="selectedRole === 'Employer'" class="form-group">
+            <label for="company">Company Name</label>
+            <div class="input-group">
+                <input type="text" id="company" name="company" placeholder="Company Name" required maxlength="20">
+            </div>
+        </div>
+
+        <div ng-show="selectedRole === 'Employer'" class="form-group">
+            <label for="industry">Industry</label>
+            <div class="input-group">
+                <input type="text" id="industry" name="industry" placeholder="Industry" required maxlength="20">
+            </div>
+        </div>
+
         <div class="form-group">
             <label for="contactNumber">Contact Number</label>
             <div class="input-group">
@@ -290,22 +340,19 @@
             <label for="password">Password</label>
             <div class="input-group">
                 <input type="password" id="password" name="password" placeholder="Create a strong password" autocomplete="new-password" required>
+                <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
         </div>
 
         <div class="form-group">
             <label for="confirmPassword">Confirm Password</label>
             <div class="input-group">
                 <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" autocomplete="new-password" required>
-        </div>
-
-        <div class="form-group">
-            <label for="roleID">Register as</label>
-            <div class="input-group">
-                <select id="roleID" name="roleID" required>
-                    <option value="">Select Role</option>
-                    <option value="1">Student</option>
-                    <option value="2">Employer</option>
-                </select>
+                <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
+                    <i class="fas fa-eye"></i>
+                </button>
             </div>
         </div>
 
@@ -317,65 +364,28 @@
             <a href="#">Privacy Policy</a>
         </div>
 
-        <div style="margin-top: 20px;">
+        <div style="margin-top: 1.5rem;">
             Already have an account? <a href="/JobPortal/LoginPage" class="login-link">Log in</a>
         </div>
     </form>
 </div>
 
 <script>
-    function togglePassword(inputId) {
-        const input = document.getElementById(inputId);
-        const button = input.nextElementSibling;
-
-        if (input.type === 'password') {
-            input.type = 'text';
-            button.textContent = 'Hide';
-        } else {
-            input.type = 'password';
-            button.textContent = 'Show';
-        }
+function togglePassword(inputId) {
+    const input = document.getElementById(inputId);
+    const icon = input.nextElementSibling.querySelector('i');
+    
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
     }
-
-    // Password validation
-    const password = document.getElementById('password');
-    const requirements = {
-        length: document.getElementById('length'),
-        uppercase: document.getElementById('uppercase'),
-        lowercase: document.getElementById('lowercase'),
-        number: document.getElementById('number')
-    };
-
-    password.addEventListener('input', function () {
-        const value = this.value;
-
-        // Check length
-        if (value.length >= 8) {
-            requirements.length.classList.add('valid');
-        } else {
-            requirements.length.classList.remove('valid');
-        }
-
-        // Check uppercase
-        if (/[A-Z]/.test(value)) {
-            requirements.uppercase.classList.add('valid');
-        } else {
-            requirements.uppercase.classList.remove('valid');
-        }
-
-        // Check lowercase
-        if (/[a-z]/.test(value)) {
-            requirements.lowercase.classList.add('valid');
-        } else {
-            requirements.lowercase.classList.remove('valid');
-        }
-
-        // Check number
-        if (/[0-9]/.test(value)) {
-            requirements.number.classList.add('valid');
-        } else {
-            requirements.number.classList.remove('valid');
-        }
-    });
+}
 </script>
+
+
 

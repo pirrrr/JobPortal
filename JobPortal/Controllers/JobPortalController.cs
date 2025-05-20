@@ -21,7 +21,7 @@ namespace JobPortal.Controllers
         {
             return View();
         }
-        public ActionResult Homepage()
+        public ActionResult StudentDashboard()
         {
             return View();
         }

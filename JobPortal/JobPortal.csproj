@@ -1053,10 +1053,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\version.json" />
-    <Content Include="Views\Shared\_headerfooter.cshtml" />
+    <Content Include="Views\Shared\_JobPortalLayout.cshtml" />
     <Content Include="Views\JobPortal\LoginPage.cshtml" />
     <Content Include="Views\JobPortal\Register.cshtml" />
-    <Content Include="Views\JobPortal\Homepage.cshtml" />
+    <Content Include="Views\JobPortal\StudentDashboard.cshtml" />
     <Content Include="Views\JobPortal\EmployerDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
